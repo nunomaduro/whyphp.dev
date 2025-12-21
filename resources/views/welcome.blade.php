@@ -765,7 +765,7 @@ composer run dev <span style="color:#5c6370;"># visit http://localhost:8000</spa
 
             // Share functionality
             const shareUrl = 'https://whyphp.dev';
-            const shareText = `Why PHP? JIT compilation, immutability by default via readonly, enums, attributes, and a type system that rivals TypeScript.
+            const shareText = `Why PHP in 2026? JIT compilation, immutability by default via readonly, enums, attributes, and a type system that rivals TypeScript.
 
 Check this out:`;
 
