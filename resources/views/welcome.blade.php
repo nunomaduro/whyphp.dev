@@ -393,6 +393,55 @@
                 color: #7A86E8;
             }
 
+            .share-section {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                margin: 2rem 0;
+                flex-wrap: wrap;
+            }
+
+            .share-label {
+                font-size: 0.875rem;
+                color: #71717a;
+                font-family: 'JetBrains Mono', monospace;
+            }
+
+            .share-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.5rem 1rem;
+                background: #18181b;
+                border: 1px solid #27272a;
+                border-radius: 6px;
+                color: #a1a1aa;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.875rem;
+                line-height: 1.5;
+                text-decoration: none;
+                cursor: pointer;
+                transition: all 0.2s;
+            }
+
+            .share-btn:hover {
+                border-color: #7A86E8;
+                color: #fff;
+                background: #1f1f23;
+            }
+
+            .share-btn svg {
+                width: 16px;
+                height: 16px;
+                fill: currentColor;
+            }
+
+            .share-btn.copied {
+                border-color: #7A86E8;
+                background: #7A86E8;
+                color: #fff;
+            }
+
             @media (max-width: 640px) {
                 .directory-grid {
                     grid-template-columns: 1fr;
@@ -495,6 +544,22 @@
     }
 }</code></pre>
 
+            <div class="share-section">
+                <span class="share-label">Spread the word:</span>
+                <a href="#" class="share-btn" id="share-twitter" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    Twitter
+                </a>
+                <a href="#" class="share-btn" id="share-linkedin" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+                <button class="share-btn" id="share-copy">
+                    <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                    Copy link
+                </button>
+            </div>
+
             <hr>
 
             <section id="ecosystem">
@@ -541,6 +606,22 @@
 
                 <div class="video-embed">
                     <iframe src="https://www.youtube.com/embed/PLkLhIwVfMk" title="Why PHP?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+
+                <div class="share-section">
+                    <span class="share-label">Share the video:</span>
+                    <a href="#" class="share-btn" id="share-video-twitter" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        Twitter
+                    </a>
+                    <a href="#" class="share-btn" id="share-video-linkedin" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
+                    <button class="share-btn" id="share-video-copy">
+                        <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                        Copy link
+                    </button>
                 </div>
 
                 <hr>
@@ -680,6 +761,50 @@ composer run dev <span style="color:#5c6370;"># visit http://localhost:8000</spa
                         btn.classList.remove('copied');
                     }, 1000);
                 });
+            });
+
+            // Share functionality
+            const shareUrl = 'https://whyphp.dev';
+            const shareText = `Why PHP? JIT compilation, immutability by default via readonly, enums, attributes, and a type system that rivals TypeScript.
+
+Check this out:`;
+
+            document.getElementById('share-twitter').href =
+                `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+
+            document.getElementById('share-linkedin').href =
+                `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+
+            document.getElementById('share-copy').addEventListener('click', async () => {
+                await navigator.clipboard.writeText(shareUrl);
+                const btn = document.getElementById('share-copy');
+                btn.classList.add('copied');
+                btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Copied!';
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copy link';
+                }, 2000);
+            });
+
+            // Video share functionality
+            const videoUrl = 'https://www.youtube.com/watch?v=PLkLhIwVfMk';
+            const videoShareText = 'Why PHP in 2026? Watch this...';
+
+            document.getElementById('share-video-twitter').href =
+                `https://twitter.com/intent/tweet?text=${encodeURIComponent(videoShareText)}&url=${encodeURIComponent(videoUrl)}`;
+
+            document.getElementById('share-video-linkedin').href =
+                `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(videoUrl)}`;
+
+            document.getElementById('share-video-copy').addEventListener('click', async () => {
+                await navigator.clipboard.writeText(videoUrl);
+                const btn = document.getElementById('share-video-copy');
+                btn.classList.add('copied');
+                btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Copied!';
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copy link';
+                }, 2000);
             });
         </script>
     </body>
