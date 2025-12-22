@@ -1193,7 +1193,7 @@
 
             <p class="subtitle">It's actually insanely good now.</p>
 
-            <p class="hero-text-1">PHP isn't the language you remember from 2004. Modern PHP has JIT compilation, immutability via <code>readonly</code>, enums, attributes, and a type system that rivals TypeScript.</p>
+            <p class="hero-text-1">PHP has come a long way. Modern PHP has JIT compilation, immutability via <code>readonly</code>, enums, attributes, and a type system that rivals TypeScript.</p>
 
             <p class="hero-text-2">No build steps. No transpilation. No bundling. Just write code and <a href="https://cloud.laravel.com" target="_blank" rel="noopener">deploy</a>. That's the superpower everyone forgot about.</p>
 
