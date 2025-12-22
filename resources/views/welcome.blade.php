@@ -50,7 +50,7 @@
             "name": "Why PHP",
             "alternateName": ["whyphp.dev", "Why PHP in 2026"],
             "url": "https://whyphp.dev",
-            "description": "PHP powers 77% of the web and is actually good now. TypeScript-level types, no build steps, immutability via readonly, enums, and more.",
+            "description": "PHP is actually insanely good now. TypeScript-level types, no build steps, immutability via readonly, enums, and more.",
             "author": {
                 "@@type": "Person",
                 "name": "Nuno Maduro",
@@ -74,7 +74,7 @@
                     "name": "Why should I use PHP in 2026?",
                     "acceptedAnswer": {
                         "@@type": "Answer",
-                        "text": "PHP powers 77% of the web and is actually good now. TypeScript-level types, no build steps, immutability via readonly, enums, and a type system that rivals TypeScript. No node_modules. Just write code and deploy."
+                        "text": "PHP is actually insanely good now. TypeScript-level types, no build steps, immutability via readonly, enums, and a type system that rivals TypeScript. Just write code and deploy."
                     }
                 },
                 {
@@ -82,7 +82,7 @@
                     "name": "Is PHP still relevant?",
                     "acceptedAnswer": {
                         "@@type": "Answer",
-                        "text": "Absolutely. PHP powers 77% of the web and is actually good now. TypeScript-level type safety, Jest-level testing with Pest, no build steps, and no node_modules. Major platforms like WordPress, Facebook, and Wikipedia run on PHP."
+                        "text": "Absolutely. PHP is actually insanely good now. TypeScript-level type safety, Jest-level testing with Pest, and no build steps. Major platforms like WordPress, Facebook, and Wikipedia run on PHP."
                     }
                 },
                 {
@@ -101,7 +101,7 @@
             "@@context": "https://schema.org",
             "@@type": "VideoObject",
             "name": "Why PHP in 2026?",
-            "description": "PHP in 2026 is so good. Watch me explain why PHP powers 77% of the web and is actually good now.",
+            "description": "PHP in 2026 is so good. Watch me explain why PHP is actually insanely good now.",
             "thumbnailUrl": "https://img.youtube.com/vi/PLkLhIwVfMk/maxresdefault.jpg",
             "uploadDate": "2024-12-01",
             "contentUrl": "https://www.youtube.com/watch?v=PLkLhIwVfMk",
@@ -1193,7 +1193,7 @@
 
             <p class="subtitle">It's actually insanely good now.</p>
 
-            <p class="hero-text-1">Stop pretending PHP is still the language from 2004. It's not. Modern PHP has JIT compilation, immutability via <code>readonly</code>, enums, attributes, and a type system that rivals TypeScript.</p>
+            <p class="hero-text-1">PHP isn't the language you remember from 2004. Modern PHP has JIT compilation, immutability via <code>readonly</code>, enums, attributes, and a type system that rivals TypeScript.</p>
 
             <p class="hero-text-2">No build steps. No transpilation. No bundling. Just write code and <a href="https://cloud.laravel.com" target="_blank" rel="noopener">deploy</a>. That's the superpower everyone forgot about.</p>
 
