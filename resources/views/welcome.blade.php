@@ -299,6 +299,14 @@
                 display: flex;
                 gap: 0.5rem;
                 margin: 1.5rem 0 1rem;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .os-selector::-webkit-scrollbar {
+                display: none;
             }
 
             .os-tab {
@@ -311,6 +319,7 @@
                 font-size: 0.875rem;
                 cursor: pointer;
                 transition: all 0.2s;
+                white-space: nowrap;
             }
 
             .os-tab:hover {
@@ -478,11 +487,12 @@
 
             .terminal-body {
                 padding: 1.5rem 1.75rem;
-                min-height: 200px;
+                height: 320px;
                 font-family: 'JetBrains Mono', monospace;
                 font-size: 0.8125rem;
                 line-height: 1.7;
                 background: linear-gradient(180deg, rgba(15, 15, 20, 0.5) 0%, rgba(10, 10, 15, 0.8) 100%);
+                overflow-y: auto;
             }
 
             .terminal-line {
@@ -658,7 +668,7 @@
                 .terminal-body {
                     padding: 1rem;
                     font-size: 0.75rem;
-                    min-height: 150px;
+                    height: 280px;
                 }
                 .terminal-tab {
                     padding: 0.4rem 0.75rem;
@@ -1035,6 +1045,9 @@
             }
 
             @media (max-width: 640px) {
+                .container {
+                    padding-bottom: 8rem;
+                }
                 .floating-cta {
                     bottom: 1rem;
                     right: 1rem;
