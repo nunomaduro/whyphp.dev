@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Primary Meta Tags -->
-        <title>Why PHP in 2026? The Language That Powers 77% of the Web is Actually Good Now</title>
+        <title>Why PHP in 2026?</title>
         <meta name="title" content="Why PHP in 2026? The Language That Powers 77% of the Web is Actually Good Now">
         <meta name="description" content="PHP powers 77% of the web and is actually good now. TypeScript-level types, no build steps, immutability via readonly, enums, and more. No node_modules. Just write code and deploy.">
         <meta name="keywords" content="PHP, modern PHP, PHP 8, PHP 8.5, Laravel, Symfony, web development, programming language, type-safe PHP, PHP tutorial, learn PHP, PHP framework, Composer, PHPStan, Pest, readonly, enums">
@@ -24,20 +24,22 @@
         <meta property="og:site_name" content="Why PHP">
         <meta property="og:title" content="Why PHP in 2026? The Language That Powers 77% of the Web is Actually Good Now">
         <meta property="og:description" content="PHP powers 77% of the web and is actually good now. TypeScript-level types, no build steps, immutability via readonly, enums, and more. Just write code and deploy.">
-        <meta property="og:image" content="https://whyphp.dev/og-image.png">
+        <meta property="og:image" content="https://whyphp.dev/images/og-1200x630.png">
+        <meta property="og:image:secure_url" content="https://whyphp.dev/images/og-1200x630.png">
+        <meta property="og:image:type" content="image/png">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
-        <meta property="og:image:alt" content="Why PHP in 2026? - PHP is actually good now">
+        <meta property="og:image:alt" content="Why PHP in 2026? It powers 77% of the web. And it's actually good now.">
         <meta property="og:locale" content="en_US">
 
         <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="@@enunomaduro">
-        <meta name="twitter:creator" content="@@enunomaduro">
+        <meta name="twitter:site" content="@enunomaduro">
+        <meta name="twitter:creator" content="@enunomaduro">
         <meta name="twitter:url" content="https://whyphp.dev">
         <meta name="twitter:title" content="Why PHP in 2026? The Language That Powers 77% of the Web is Actually Good Now">
         <meta name="twitter:description" content="PHP powers 77% of the web and is actually good now. TypeScript-level types, no build steps, immutability via readonly, enums, and more. Just write code and deploy.">
-        <meta name="twitter:image" content="https://whyphp.dev/og-image.png">
+        <meta name="twitter:image" content="https://whyphp.dev/images/og-twitter-1200x600.png">
         <meta name="twitter:image:alt" content="Why PHP in 2026? - PHP is actually good now">
 
         <!-- Structured Data / JSON-LD -->
@@ -94,14 +96,41 @@
             ]
         }
         </script>
+        <script type="application/ld+json">
+        {
+            "@@context": "https://schema.org",
+            "@@type": "VideoObject",
+            "name": "Why PHP in 2026?",
+            "description": "PHP in 2026 is so good. Watch me explain why PHP powers 77% of the web and is actually good now.",
+            "thumbnailUrl": "https://img.youtube.com/vi/PLkLhIwVfMk/maxresdefault.jpg",
+            "uploadDate": "2024-12-01",
+            "contentUrl": "https://www.youtube.com/watch?v=PLkLhIwVfMk",
+            "embedUrl": "https://www.youtube.com/embed/PLkLhIwVfMk",
+            "duration": "PT10M",
+            "author": {
+                "@@type": "Person",
+                "name": "Nuno Maduro",
+                "url": "https://twitter.com/enunomaduro"
+            }
+        }
+        </script>
 
-        <!-- Theme -->
+        <!-- Theme & Icons -->
         <meta name="theme-color" content="#7A86E8">
         <meta name="msapplication-TileColor" content="#7A86E8">
-        <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="mobile-web-app-capable" content="yes">
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/og-1200x630.png">
+        <link rel="apple-touch-icon" href="/images/og-1200x630.png">
 
+        <!-- Preconnect & DNS Prefetch for Performance -->
         <link rel="preconnect" href="https://fonts.bunny.net">
+        <link rel="preconnect" href="https://www.youtube.com">
+        <link rel="preconnect" href="https://img.youtube.com">
+        <link rel="dns-prefetch" href="https://fonts.bunny.net">
+        <link rel="dns-prefetch" href="https://www.youtube.com">
+        <link rel="dns-prefetch" href="https://img.shields.io">
         <link href="https://fonts.bunny.net/css?family=space-grotesk:400,500,600,700&family=jetbrains-mono:400,700" rel="stylesheet" />
 
         <style>
@@ -989,12 +1018,55 @@
                 fill: currentColor;
             }
 
+            .floating-cta-left {
+                position: fixed;
+                bottom: 2rem;
+                left: 2rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.625rem 1rem;
+                background: rgba(24, 24, 27, 0.9);
+                backdrop-filter: blur(8px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 50px;
+                color: #a1a1aa;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.8rem;
+                text-decoration: none;
+                cursor: pointer;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1000;
+                animation: floatIn 0.6s ease forwards 1.2s;
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            .floating-cta-left:hover {
+                background: rgba(39, 39, 42, 0.95);
+                border-color: rgba(122, 134, 232, 0.3);
+                color: #fff;
+                transform: translateY(-2px);
+            }
+
+            .floating-cta-left svg {
+                width: 16px;
+                height: 16px;
+                fill: currentColor;
+            }
+
             @media (max-width: 640px) {
                 .floating-cta {
                     bottom: 1rem;
                     right: 1rem;
                     padding: 0.6rem 1rem;
                     font-size: 0.8rem;
+                }
+                .floating-cta-left {
+                    bottom: 1rem;
+                    left: 1rem;
+                    padding: 0.5rem 0.875rem;
+                    font-size: 0.75rem;
                 }
             }
 
@@ -1101,24 +1173,25 @@
         </style>
     </head>
     <body>
-        <div class="container">
-            <nav class="nav">
+        <main class="container">
+            <nav class="nav" aria-label="Main navigation">
                 <a href="#ecosystem">Ecosystem</a>
-                <span class="nav-sep">·</span>
+                <span class="nav-sep" aria-hidden="true">·</span>
                 <a href="#watch-this">Watch this</a>
-                <span class="nav-sep">·</span>
+                <span class="nav-sep" aria-hidden="true">·</span>
                 <a href="#start">Start today</a>
-                <span class="nav-sep">·</span>
+                <span class="nav-sep" aria-hidden="true">·</span>
                 <a href="#badge">Badge</a>
             </nav>
 
-            <h1 class="hero-title">Why <span class="highlight">PHP</span> in 2026?</h1>
+            <header>
+                <h1 class="hero-title">Why <span class="highlight">PHP</span> in 2026?</h1>
 
             <p class="subtitle">It powers 77% of the web. And it's actually good now.</p>
 
             <p class="hero-text-1">Stop pretending PHP is still the language from 2004. It's not. Modern PHP has JIT compilation, immutability via <code>readonly</code>, enums, attributes, and a type system that rivals TypeScript.</p>
 
-            <p class="hero-text-2">No build steps. No transpilation. No bundling. No 900MB <code>node_modules</code>. Just write code and <a href="https://cloud.laravel.com" target="_blank">deploy</a>. That's the superpower everyone forgot about.</p>
+            <p class="hero-text-2">No build steps. No transpilation. No bundling. No 900MB <code>node_modules</code>. Just write code and <a href="https://cloud.laravel.com" target="_blank" rel="noopener">deploy</a>. That's the superpower everyone forgot about.</p>
 
             <div class="os-selector hero-tabs reveal">
                 <button class="os-tab active" data-hero="value-objects">Value Objects</button>
@@ -1162,6 +1235,7 @@
 }</code></pre>
                 </div>
             </div>
+            </header>
 
             <hr>
 
@@ -1204,7 +1278,7 @@
                         <button class="terminal-tab" data-terminal="rector">Rector</button>
                     </div>
                     <div class="terminal-info" id="terminal-info">
-                        <a href="https://laravel.com" target="_blank" id="terminal-link">
+                        <a href="https://laravel.com" target="_blank" rel="noopener" id="terminal-link">
                             <strong id="terminal-tool-name">Laravel</strong>
                             <span id="terminal-tool-desc">The full-stack framework for artisans</span>
                             <span class="arrow">→</span>
@@ -1329,16 +1403,21 @@ composer run dev <span style="color:#5c6370;"># visit http://localhost:8000</spa
 
             <footer>
                 <div class="footer-row">
-                    <span>Made by <a href="https://x.com/enunomaduro" target="_blank">Nuno Maduro</a></span>
+                    <span>Made by <a href="https://x.com/enunomaduro" target="_blank" rel="noopener">Nuno Maduro</a></span>
                     <div class="footer-links">
-                        <a href="https://php.net" target="_blank">php.net</a>
-                        <a href="https://thephp.foundation" target="_blank">PHP Foundation</a>
+                        <a href="https://php.net" target="_blank" rel="noopener">php.net</a>
+                        <a href="https://thephp.foundation" target="_blank" rel="noopener">PHP Foundation</a>
                     </div>
                 </div>
             </footer>
-        </div>
+        </main>
 
-        <button class="floating-cta" id="share-btn">
+        <a href="https://github.com/nunomaduro/whyphp.dev" target="_blank" rel="noopener" class="floating-cta-left" aria-label="Edit this site on GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            Edit this site
+        </a>
+
+        <button class="floating-cta" id="share-btn" aria-label="Share this page">
             <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
             Spread the word
         </button>
@@ -1347,15 +1426,15 @@ composer run dev <span style="color:#5c6370;"># visit http://localhost:8000</spa
             <div class="share-modal">
                 <h3>Spread the word</h3>
                 <div class="share-modal-options">
-                    <a href="#" class="share-modal-option" id="modal-share-twitter" target="_blank">
+                    <a href="#" class="share-modal-option" id="modal-share-twitter" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                         Twitter / X
                     </a>
-                    <a href="#" class="share-modal-option" id="modal-share-bluesky" target="_blank">
+                    <a href="#" class="share-modal-option" id="modal-share-bluesky" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
                         Bluesky
                     </a>
-                    <a href="#" class="share-modal-option" id="modal-share-linkedin" target="_blank">
+                    <a href="#" class="share-modal-option" id="modal-share-linkedin" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                         LinkedIn
                     </a>

@@ -1,2 +1,6 @@
+# robots.txt for whyphp.dev
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemap
+Sitemap: https://whyphp.dev/sitemap.xml
