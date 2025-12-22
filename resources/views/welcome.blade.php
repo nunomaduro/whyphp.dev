@@ -332,8 +332,19 @@
                 margin: 1rem 0;
             }
 
-            .os-commands.hidden {
+            .os-commands.hidden,
+            .example-commands.hidden,
+            .badge-commands.hidden,
+            .hero-code.hidden {
                 display: none;
+            }
+
+            .hero-code,
+            .hero-code * {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+                animation: none !important;
             }
 
             .command-step {
@@ -772,16 +783,10 @@
 
             .badge-preview {
                 display: inline-block;
-                padding: 1.5rem 2rem;
-                background: #0d0d0f;
-                border: 1px dashed #3f3f46;
-                border-radius: 8px;
-                transition: all 0.3s ease;
+                transition: transform 0.3s ease;
             }
 
             .badge-preview:hover {
-                border-color: #7A86E8;
-                background: #18181b;
                 transform: scale(1.05);
             }
 
@@ -816,6 +821,155 @@
                 display: block;
             }
 
+            /* Floating badge CTA */
+            .floating-cta {
+                position: fixed;
+                bottom: 2rem;
+                right: 2rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.75rem 1.25rem;
+                background: linear-gradient(135deg, #7A86E8 0%, #60A5FA 100%);
+                border: none;
+                border-radius: 50px;
+                color: #fff;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.875rem;
+                font-weight: 600;
+                text-decoration: none;
+                cursor: pointer;
+                box-shadow: 0 4px 20px rgba(122, 134, 232, 0.4);
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1000;
+                animation: floatIn 0.6s ease forwards 1s;
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            @keyframes floatIn {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .floating-cta:hover {
+                transform: translateY(-3px) scale(1.05);
+                box-shadow: 0 8px 30px rgba(122, 134, 232, 0.6);
+            }
+
+            .floating-cta:active {
+                transform: translateY(-1px) scale(1.02);
+            }
+
+            .floating-cta svg {
+                width: 18px;
+                height: 18px;
+                fill: currentColor;
+            }
+
+            @media (max-width: 640px) {
+                .floating-cta {
+                    bottom: 1rem;
+                    right: 1rem;
+                    padding: 0.6rem 1rem;
+                    font-size: 0.8rem;
+                }
+            }
+
+            /* Share Modal */
+            .share-modal-overlay {
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.8);
+                backdrop-filter: blur(4px);
+                z-index: 2000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .share-modal-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .share-modal {
+                background: #18181b;
+                border: 1px solid #27272a;
+                border-radius: 16px;
+                padding: 2rem;
+                max-width: 360px;
+                width: 90%;
+                transform: scale(0.9) translateY(20px);
+                transition: transform 0.3s ease;
+            }
+
+            .share-modal-overlay.active .share-modal {
+                transform: scale(1) translateY(0);
+            }
+
+            .share-modal h3 {
+                margin: 0 0 1.5rem 0;
+                font-size: 1.25rem;
+                text-align: center;
+                color: #fff;
+            }
+
+            .share-modal-options {
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .share-modal-option {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                padding: 0.875rem 1rem;
+                background: #27272a;
+                border: 1px solid #3f3f46;
+                border-radius: 10px;
+                color: #fff;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.875rem;
+                text-decoration: none;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+
+            .share-modal-option:hover {
+                background: #3f3f46;
+                border-color: #7A86E8;
+                transform: translateX(4px);
+            }
+
+            .share-modal-option svg {
+                width: 20px;
+                height: 20px;
+                flex-shrink: 0;
+            }
+
+            .share-modal-close {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                background: none;
+                border: none;
+                color: #71717a;
+                cursor: pointer;
+                padding: 0.5rem;
+                transition: color 0.2s ease;
+            }
+
+            .share-modal-close:hover {
+                color: #fff;
+            }
+
             /* Reduce motion for accessibility */
             @media (prefers-reduced-motion: reduce) {
                 *, *::before, *::after {
@@ -833,8 +987,6 @@
                 <span class="nav-sep">·</span>
                 <a href="#watch-this">Watch this</a>
                 <span class="nav-sep">·</span>
-                <a href="#examples">Real examples</a>
-                <span class="nav-sep">·</span>
                 <a href="#start">Start today</a>
                 <span class="nav-sep">·</span>
                 <a href="#badge">Badge</a>
@@ -848,24 +1000,47 @@
 
             <p class="hero-text-2">No build steps. No transpilation. No bundling. No 900MB <code>node_modules</code>. Just write code and <a href="https://cloud.laravel.com" target="_blank">deploy</a>. That's the superpower everyone forgot about.</p>
 
-            <div class="hero-code code-typed" id="hero-code-block">
-            <pre><code id="typed-code"></code></pre>
+            <div class="os-selector hero-tabs reveal">
+                <button class="os-tab active" data-hero="value-objects">Value Objects</button>
+                <button class="os-tab" data-hero="api">API</button>
+                <button class="os-tab" data-hero="testing">Testing</button>
+                <button class="os-tab" data-hero="generics">Generics</button>
             </div>
 
-            <div class="share-section hero-share">
-                <span class="share-label">Spread the word:</span>
-                <a href="#" class="share-btn" id="share-twitter" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    Twitter
-                </a>
-                <a href="#" class="share-btn" id="share-linkedin" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    LinkedIn
-                </a>
-                <button class="share-btn" id="share-copy">
-                    <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-                    Copy link
-                </button>
+            <div class="hero-code-container">
+                <div class="hero-code code-typed" id="hero-value-objects">
+                    <pre><code id="typed-code"></code></pre>
+                </div>
+
+                <div class="hero-code hidden" id="hero-api">
+                    <pre><code><span style="color:#e5c07b;">Route</span>::<span style="color:#61afef;">get</span>(<span style="color:#98c379;">'/books'</span>, <span style="color:#c678dd;">function</span> () {
+    <span style="color:#c678dd;">return</span> <span style="color:#e5c07b;">Book</span>::<span style="color:#61afef;">query</span>()
+        -><span style="color:#61afef;">where</span>(<span style="color:#98c379;">'status'</span>, <span style="color:#e5c07b;">Status</span>::<span style="color:#e06c75;">Published</span>)
+        -><span style="color:#61afef;">with</span>(<span style="color:#98c379;">'author'</span>)
+        -><span style="color:#61afef;">paginate</span>();
+});</code></pre>
+                </div>
+
+                <div class="hero-code hidden" id="hero-testing">
+                    <pre><code><span style="color:#61afef;">it</span>(<span style="color:#98c379;">'publishes a book'</span>, <span style="color:#c678dd;">function</span> () {
+    <span style="color:#e06c75;">$book</span> = <span style="color:#e5c07b;">Book</span>::<span style="color:#61afef;">factory</span>()-><span style="color:#61afef;">create</span>();
+
+    <span style="color:#e06c75;">$book</span>-><span style="color:#61afef;">publish</span>();
+
+    <span style="color:#61afef;">expect</span>(<span style="color:#e06c75;">$book</span>-><span style="color:#e06c75;">status</span>)-><span style="color:#61afef;">toBe</span>(<span style="color:#e5c07b;">Status</span>::<span style="color:#e06c75;">Published</span>);
+});</code></pre>
+                </div>
+
+                <div class="hero-code hidden" id="hero-generics">
+                    <pre><code><span style="color:#5c6370;">/** </span><span style="color:#c678dd;">@return</span><span style="color:#5c6370;"> </span><span style="color:#e5c07b;">array</span><span style="color:#5c6370;">&lt;</span><span style="color:#e5c07b;">int</span><span style="color:#5c6370;">, </span><span style="color:#e5c07b;">string</span><span style="color:#5c6370;">&gt; */</span>
+<span style="color:#c678dd;">public function</span> <span style="color:#61afef;">titles</span>(): <span style="color:#e5c07b;">array</span>
+{
+    <span style="color:#c678dd;">return</span> <span style="color:#e5c07b;">Book</span>::<span style="color:#61afef;">all</span>()
+        -><span style="color:#61afef;">filter</span>(<span style="color:#c678dd;">fn</span> (<span style="color:#e5c07b;">Book</span> <span style="color:#e06c75;">$book</span>): <span style="color:#e5c07b;">bool</span> => <span style="color:#e06c75;">$book</span>-><span style="color:#61afef;">isPublished</span>())
+        -><span style="color:#61afef;">map</span>(<span style="color:#c678dd;">fn</span> (<span style="color:#e5c07b;">Book</span> <span style="color:#e06c75;">$book</span>): <span style="color:#e5c07b;">string</span> => <span style="color:#e06c75;">$book</span>-><span style="color:#e06c75;">title</span>)
+        -><span style="color:#61afef;">toArray</span>();
+}</code></pre>
+                </div>
             </div>
 
             <hr>
@@ -916,53 +1091,6 @@
                     <iframe src="https://www.youtube.com/embed/PLkLhIwVfMk" title="Why PHP?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
 
-                <div class="share-section">
-                    <span class="share-label">Share the video:</span>
-                    <a href="#" class="share-btn" id="share-video-twitter" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                        Twitter
-                    </a>
-                    <a href="#" class="share-btn" id="share-video-linkedin" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                        LinkedIn
-                    </a>
-                    <button class="share-btn" id="share-video-copy">
-                        <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-                        Copy link
-                    </button>
-                </div>
-
-                <hr>
-
-                <h2 id="examples" class="reveal">Code That Ships</h2>
-                <p class="reveal">This is what PHP looks like in production.</p>
-
-                <h3 class="reveal">API with Laravel</h3>
-                <pre class="reveal"><code><span style="color:#e5c07b;">Route</span>::<span style="color:#61afef;">get</span>(<span style="color:#98c379;">'/books'</span>, <span style="color:#c678dd;">function</span> () {
-    <span style="color:#c678dd;">return</span> <span style="color:#e5c07b;">Book</span>::<span style="color:#61afef;">query</span>()
-        -><span style="color:#61afef;">where</span>(<span style="color:#98c379;">'status'</span>, <span style="color:#e5c07b;">Status</span>::<span style="color:#e06c75;">Published</span>)
-        -><span style="color:#61afef;">with</span>(<span style="color:#98c379;">'author'</span>)
-        -><span style="color:#61afef;">paginate</span>();
-});</code></pre>
-
-                <h3 class="reveal">Testing with Pest</h3>
-                <pre class="reveal"><code><span style="color:#61afef;">it</span>(<span style="color:#98c379;">'publishes a book'</span>, <span style="color:#c678dd;">function</span> () {
-    <span style="color:#e06c75;">$book</span> = <span style="color:#e5c07b;">Book</span>::<span style="color:#61afef;">factory</span>()-><span style="color:#61afef;">create</span>();
-
-    <span style="color:#e06c75;">$book</span>-><span style="color:#61afef;">publish</span>();
-
-    <span style="color:#61afef;">expect</span>(<span style="color:#e06c75;">$book</span>-><span style="color:#e06c75;">status</span>)-><span style="color:#61afef;">toBe</span>(<span style="color:#e5c07b;">Status</span>::<span style="color:#e06c75;">Published</span>);
-});</code></pre>
-
-                <h3 class="reveal">Generics with PHPStan</h3>
-                <pre class="reveal"><code><span style="color:#5c6370;">/** </span><span style="color:#c678dd;">@return</span><span style="color:#5c6370;"> </span><span style="color:#e5c07b;">array</span><span style="color:#5c6370;">&lt;</span><span style="color:#e5c07b;">int</span><span style="color:#5c6370;">, </span><span style="color:#e5c07b;">string</span><span style="color:#5c6370;">&gt; */</span>
-<span style="color:#c678dd;">public function</span> <span style="color:#61afef;">names</span>(): <span style="color:#e5c07b;">array</span>
-{
-    <span style="color:#c678dd;">return</span> <span style="color:#e5c07b;">User</span>::<span style="color:#61afef;">all</span>()
-        -><span style="color:#61afef;">filter</span>(<span style="color:#c678dd;">fn</span> (<span style="color:#e5c07b;">User</span> <span style="color:#e06c75;">$user</span>): <span style="color:#e5c07b;">bool</span> => <span style="color:#e06c75;">$user</span>-><span style="color:#61afef;">isActive</span>())
-        -><span style="color:#61afef;">map</span>(<span style="color:#c678dd;">fn</span> (<span style="color:#e5c07b;">User</span> <span style="color:#e06c75;">$user</span>): <span style="color:#e5c07b;">string</span> => <span style="color:#e06c75;">$user</span>-><span style="color:#e06c75;">name</span>)
-        -><span style="color:#61afef;">toArray</span>();
-}</code></pre>
             </section>
 
             <hr>
@@ -1044,30 +1172,25 @@ composer run dev <span style="color:#5c6370;"># visit http://localhost:8000</spa
                 <p>Add this badge to your README. Let the mass know.</p>
 
                 <div class="badge-showcase">
-                    <a href="https://whyphp.dev" target="_blank" class="badge-preview">
-                        <svg width="120" height="28" viewBox="0 0 120 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="120" height="28" rx="6" fill="#18181b"/>
-                            <rect x="0.5" y="0.5" width="119" height="27" rx="5.5" stroke="#27272a"/>
-                            <text x="12" y="18.5" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#7A86E8">Why</text>
-                            <text x="40" y="18.5" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#fafafa">PHP</text>
-                            <text x="65" y="18.5" font-family="JetBrains Mono, monospace" font-size="11" fill="#71717a">in 2026</text>
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="badge-code">
-                    <span class="step-label">Markdown</span>
-                    <div class="code-block">
-                        <button class="copy-btn" data-copy='[![Why PHP](https://img.shields.io/badge/Why_PHP-in_2026-7A86E8?style=flat-square&labelColor=18181b)](https://whyphp.dev)'>copy</button>
-                        <pre><code>[![Why PHP](https://img.shields.io/badge/Why_PHP-in_2026-7A86E8?style=flat-square&labelColor=18181b)](https://whyphp.dev)</code></pre>
-                    </div>
-                </div>
-
-                <div class="badge-preview-result">
-                    <span class="step-label">Preview</span>
-                    <a href="https://whyphp.dev" target="_blank">
+                    <a href="https://whyphp.dev" target="_blank" class="badge-preview" id="badge-preview-img">
                         <img src="https://img.shields.io/badge/Why_PHP-in_2026-7A86E8?style=flat-square&labelColor=18181b" alt="Why PHP in 2026">
                     </a>
+                </div>
+
+                <div class="os-selector">
+                    <button class="os-tab active" data-format="md">Markdown</button>
+                    <button class="os-tab" data-format="html">HTML</button>
+                </div>
+
+                <div class="os-selector">
+                    <button class="os-tab active" data-style="flat-square">Flat Square</button>
+                    <button class="os-tab" data-style="flat">Flat</button>
+                    <button class="os-tab" data-style="for-the-badge">For the Badge</button>
+                </div>
+
+                <div class="code-block">
+                    <button class="copy-btn" id="badge-copy-btn">copy</button>
+                    <pre><code id="badge-code-output">[![Why PHP](https://img.shields.io/badge/Why_PHP-in_2026-7A86E8?style=flat-square&labelColor=18181b)](https://whyphp.dev)</code></pre>
                 </div>
             </section>
 
@@ -1080,6 +1203,35 @@ composer run dev <span style="color:#5c6370;"># visit http://localhost:8000</spa
                     </div>
                 </div>
             </footer>
+        </div>
+
+        <button class="floating-cta" id="share-btn">
+            <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+            Spread the word
+        </button>
+
+        <div class="share-modal-overlay" id="share-modal">
+            <div class="share-modal">
+                <h3>Spread the word</h3>
+                <div class="share-modal-options">
+                    <a href="#" class="share-modal-option" id="modal-share-twitter" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        Twitter / X
+                    </a>
+                    <a href="#" class="share-modal-option" id="modal-share-bluesky" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
+                        Bluesky
+                    </a>
+                    <a href="#" class="share-modal-option" id="modal-share-linkedin" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
+                    <button class="share-modal-option" id="modal-share-copy">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                        Copy link
+                    </button>
+                </div>
+            </div>
         </div>
 
         <script>
@@ -1152,16 +1304,69 @@ composer run dev <span style="color:#5c6370;"># visit http://localhost:8000</spa
                 });
             }, { threshold: 0.5 });
 
-            heroCodeObserver.observe(document.getElementById('hero-code-block'));
+            heroCodeObserver.observe(document.getElementById('hero-value-objects'));
 
             // ===== OS TABS =====
-            document.querySelectorAll('.os-tab').forEach(tab => {
+            document.querySelectorAll('.os-tab[data-os]').forEach(tab => {
                 tab.addEventListener('click', () => {
-                    document.querySelectorAll('.os-tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.os-tab[data-os]').forEach(t => t.classList.remove('active'));
                     document.querySelectorAll('.os-commands').forEach(c => c.classList.add('hidden'));
 
                     tab.classList.add('active');
                     document.getElementById('os-' + tab.dataset.os).classList.remove('hidden');
+                });
+            });
+
+            // ===== HERO CODE TABS =====
+            document.querySelectorAll('.os-tab[data-hero]').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.os-tab[data-hero]').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.hero-code').forEach(c => c.classList.add('hidden'));
+
+                    tab.classList.add('active');
+                    document.getElementById('hero-' + tab.dataset.hero).classList.remove('hidden');
+                });
+            });
+
+            // ===== BADGE TABS =====
+            let currentFormat = 'md';
+            let currentStyle = 'flat-square';
+
+            const updateBadgeCode = () => {
+                const baseUrl = 'https://img.shields.io/badge/Why_PHP-in_2026-7A86E8';
+                const imgUrl = `${baseUrl}?style=${currentStyle}&labelColor=18181b`;
+                const linkUrl = 'https://whyphp.dev';
+
+                // Update preview image
+                document.querySelector('#badge-preview-img img').src = imgUrl;
+
+                // Generate code based on format
+                let code;
+                if (currentFormat === 'md') {
+                    code = `[![Why PHP](${imgUrl})](${linkUrl})`;
+                } else {
+                    code = `<a href="${linkUrl}"><img src="${imgUrl}" alt="Why PHP in 2026"></a>`;
+                }
+
+                document.getElementById('badge-code-output').textContent = code;
+                document.getElementById('badge-copy-btn').dataset.copy = code;
+            };
+
+            document.querySelectorAll('.os-tab[data-format]').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.os-tab[data-format]').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    currentFormat = tab.dataset.format;
+                    updateBadgeCode();
+                });
+            });
+
+            document.querySelectorAll('.os-tab[data-style]').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.os-tab[data-style]').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    currentStyle = tab.dataset.style;
+                    updateBadgeCode();
                 });
             });
 
@@ -1218,6 +1423,46 @@ composer run dev <span style="color:#5c6370;"># visit http://localhost:8000</spa
                     btn.classList.remove('copied');
                     btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copy link';
                 }, 2000);
+            });
+
+            // ===== SHARE MODAL =====
+            const shareModal = document.getElementById('share-modal');
+            const shareBtn = document.getElementById('share-btn');
+            const modalShareText = 'Why PHP in 2026? TypeScript-level types, no build steps, immutability by default via readonly, enums, and more.';
+            const modalShareUrl = 'https://whyphp.dev';
+
+            // Set share links
+            document.getElementById('modal-share-twitter').href =
+                `https://twitter.com/intent/tweet?text=${encodeURIComponent(modalShareText)}&url=${encodeURIComponent(modalShareUrl)}`;
+            document.getElementById('modal-share-bluesky').href =
+                `https://bsky.app/intent/compose?text=${encodeURIComponent(modalShareText + ' ' + modalShareUrl)}`;
+            document.getElementById('modal-share-linkedin').href =
+                `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(modalShareUrl)}`;
+
+            shareBtn.addEventListener('click', () => {
+                shareModal.classList.add('active');
+            });
+
+            shareModal.addEventListener('click', (e) => {
+                if (e.target === shareModal) {
+                    shareModal.classList.remove('active');
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    shareModal.classList.remove('active');
+                }
+            });
+
+            document.getElementById('modal-share-copy').addEventListener('click', async () => {
+                await navigator.clipboard.writeText(modalShareUrl);
+                const btn = document.getElementById('modal-share-copy');
+                btn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Copied!';
+                setTimeout(() => {
+                    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> Copy link';
+                    shareModal.classList.remove('active');
+                }, 1500);
             });
         </script>
     </body>
