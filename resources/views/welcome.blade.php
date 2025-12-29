@@ -1272,13 +1272,14 @@
                 </div>
 
                 <div class="hero-code hidden" id="hero-generics">
-                    <pre><code><span style="color:#5c6370;">/** </span><span style="color:#c678dd;">@return</span><span style="color:#5c6370;"> </span><span style="color:#e5c07b;">array</span><span style="color:#5c6370;">&lt;</span><span style="color:#e5c07b;">int</span><span style="color:#5c6370;">, </span><span style="color:#e5c07b;">string</span><span style="color:#5c6370;">&gt; */</span>
-<span style="color:#c678dd;">public function</span> <span style="color:#61afef;">titles</span>(): <span style="color:#e5c07b;">array</span>
+                    <pre><code><span style="color:#5c6370;">/**</span>
+ <span style="color:#5c6370;">*</span> <span style="color:#c678dd;">@template</span> <span style="color:#2aacb8">T</span> <span style="color:#5c6370;">of</span> <span style="color:#e5c07b;">object</span>
+ <span style="color:#5c6370;">*</span> <span style="color:#c678dd;">@param</span> <span style="color:#e5c07b;">class-string<</span><span style="color:#2aacb8">T</span><span style="color:#e5c07b;">></span> <span style="color:#e06c75">$className</span>
+ <span style="color:#5c6370;">*</span> <span style="color:#c678dd;">@return</span> <span style="color:#2aacb8">T</span>
+ <span style="color:#5c6370;">*/</span>
+<span style="color:#c678dd;">public function</span> <span style="color:#61afef;">get</span>(<span style="color:#e5c07b;">string</span> <span style="color:#e06c75;">$className</span>): <span style="color:#e5c07b;">object</span>
 {
-    <span style="color:#c678dd;">return</span> <span style="color:#e5c07b;">Book</span>::<span style="color:#61afef;">all</span>()
-        -><span style="color:#61afef;">filter</span>(<span style="color:#c678dd;">fn</span> (<span style="color:#e5c07b;">Book</span> <span style="color:#e06c75;">$book</span>): <span style="color:#e5c07b;">bool</span> => <span style="color:#e06c75;">$book</span>-><span style="color:#61afef;">isPublished</span>())
-        -><span style="color:#61afef;">map</span>(<span style="color:#c678dd;">fn</span> (<span style="color:#e5c07b;">Book</span> <span style="color:#e06c75;">$book</span>): <span style="color:#e5c07b;">string</span> => <span style="color:#e06c75;">$book</span>-><span style="color:#e06c75;">title</span>)
-        -><span style="color:#61afef;">toArray</span>();
+    <span style="color:#5c6370;">// Accepts a class string and return the object of that type</span>
 }</code></pre>
                 </div>
             </div>
