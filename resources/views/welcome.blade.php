@@ -1217,11 +1217,55 @@
                     height: 18px;
                 }
             }
+
+            .feature-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                margin: 2rem 0;
+            }
+
+            .feature-card {
+                border: 1px solid #27272a;
+                border-radius: 12px;
+                padding: 1.5rem;
+                background: rgba(24, 24, 27, 0.4);
+                transition: border-color 0.25s ease, transform 0.25s ease;
+            }
+
+            .feature-card:hover {
+                border-color: #3f3f46;
+                transform: translateY(-3px);
+            }
+
+            .feature-card h3 {
+                margin-top: 0;
+                margin-bottom: 0.5rem;
+            }
+
+            .feature-card p {
+                font-size: 0.95rem;
+                color: #a1a1aa;
+                margin-bottom: 1rem;
+            }
+
+            .feature-card pre {
+                margin: 0;
+                font-size: 0.8rem;
+            }
+
+            @media (max-width: 640px) {
+                .feature-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
         </style>
     </head>
     <body>
         <main class="container">
             <nav class="nav" aria-label="Main navigation">
+                <a href="#features">Features</a>
+                <span class="nav-sep" aria-hidden="true">·</span>
                 <a href="#ecosystem">Ecosystem</a>
                 <span class="nav-sep" aria-hidden="true">·</span>
                 <a href="#watch-this">Watch this</a>
@@ -1299,6 +1343,70 @@
                     <svg width="71" height="28" viewBox="0 0 125 49" xmlns="http://www.w3.org/2000/svg"><path d="M105.782 11.4189V3.91893H84.3544L80.8305 28.9749L77.3435 3.91905H69.6164L70.482 10.6048C69.5895 8.89206 66.4259 3.91905 59.4637 3.91905C59.4179 3.91613 51.7261 3.91905 51.7261 3.91905L51.6965 40.4401L46.0644 3.91905L35.9445 3.91333L30.118 41.7541L30.121 3.91881H20.4356L16.944 25.1741L13.543 3.91905H3.85449V45.0582H11.484V25.2292L14.9545 45.0577H19.0106L22.4324 25.2292V45.0577H37.1407L38.0332 38.7275H43.955L44.8445 45.0577L59.2846 45.0664H59.2964V45.0577H59.3054H59.3144V31.7039L61.0846 31.4527L64.7495 45.0664H64.7585H72.2097H72.2185L72.2155 45.0577H72.2287H72.2377L67.4284 29.1019C69.8656 27.346 72.6175 22.887 71.8851 18.6214V18.6186C71.8939 18.6763 76.4246 45.084 76.4246 45.084L85.3077 45.0577L91.3776 7.76846V45.0578H105.782V37.6589H98.9446V28.224H105.782V20.7124H98.9446V11.4189H105.782ZM38.932 32.2037L41.0267 14.616L43.2017 32.2037H38.932ZM61.1094 24.0827C60.5222 24.3601 59.91 24.4987 59.314 24.4987V11.2659C59.3244 11.2659 59.3364 11.2632 59.3511 11.2632C59.9486 11.2603 64.4035 11.4393 64.4035 17.8101C64.4035 21.1426 62.8884 23.2424 61.1094 24.0827ZM121.154 37.6532V45.052H107.103V3.91333H114.668V37.6532H121.154Z"/></svg>
                 </div>
             </div>
+
+            <hr>
+
+            <section id="features" class="reveal">
+                <h2>The features that make PHP shine</h2>
+
+                <p>Not one trick. A whole toolkit for code that's type-safe, expressive, and a joy to maintain.</p>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Enums</h3>
+                        <p>Type-safe constants that carry values and behavior.</p>
+                        <pre><code><span style="color:#c678dd;">enum</span> <span style="color:#e5c07b;">Status</span>: <span style="color:#e5c07b;">string</span>
+{
+    <span style="color:#c678dd;">case</span> <span style="color:#e06c75;">Published</span> = <span style="color:#98c379;">'published'</span>;
+}</code></pre>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Traits</h3>
+                        <p>Compose reusable behavior across unrelated classes.</p>
+                        <pre><code><span style="color:#c678dd;">final class</span> <span style="color:#e5c07b;">Book</span>
+{
+    <span style="color:#c678dd;">use</span> <span style="color:#e5c07b;">HasTimestamps</span>, <span style="color:#e5c07b;">HasSlug</span>;
+}</code></pre>
+                    </div>
+                    <div class="feature-card">
+                        <h3>match</h3>
+                        <p>Exhaustive, strict branching with no fall-through.</p>
+                        <pre><code><span style="color:#e06c75;">$label</span> = <span style="color:#c678dd;">match</span> (<span style="color:#e06c75;">$status</span>) {
+    <span style="color:#e5c07b;">Status</span>::<span style="color:#e06c75;">Draft</span> => <span style="color:#98c379;">'Draft'</span>,
+    <span style="color:#e5c07b;">Status</span>::<span style="color:#e06c75;">Published</span> => <span style="color:#98c379;">'Live'</span>,
+};</code></pre>
+                    </div>
+                    <div class="feature-card">
+                        <h3>readonly</h3>
+                        <p>Immutability enforced by the language, not convention.</p>
+                        <pre><code><span style="color:#c678dd;">final readonly class</span> <span style="color:#e5c07b;">Money</span>
+{
+    <span style="color:#c678dd;">public function</span> <span style="color:#61afef;">__construct</span>(
+        <span style="color:#c678dd;">public</span> <span style="color:#e5c07b;">int</span> <span style="color:#e06c75;">$amount</span>,
+    ) {}
+}</code></pre>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Named arguments</h3>
+                        <p>Order-free, self-documenting calls.</p>
+                        <pre><code><span style="color:#c678dd;">new</span> <span style="color:#e5c07b;">Book</span>(
+    title: <span style="color:#98c379;">'Modern PHP'</span>,
+    status: <span style="color:#e5c07b;">Status</span>::<span style="color:#e06c75;">Draft</span>,
+);</code></pre>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Nullsafe</h3>
+                        <p>Chain through possibly-null values without nested checks.</p>
+                        <pre><code><span style="color:#e06c75;">$country</span> = <span style="color:#e06c75;">$user</span>?-><span style="color:#e06c75;">address</span>?-><span style="color:#e06c75;">country</span>;</code></pre>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Attributes</h3>
+                        <p>Structured, first-class metadata read at runtime.</p>
+                        <pre><code><span style="color:#5c6370;">#[</span><span style="color:#e5c07b;">Route</span>(<span style="color:#98c379;">'/books'</span>, methods: [<span style="color:#98c379;">'GET'</span>])<span style="color:#5c6370;">]</span>
+<span style="color:#c678dd;">public function</span> <span style="color:#61afef;">index</span>(): <span style="color:#e5c07b;">View</span></code></pre>
+                    </div>
+                </div>
+            </section>
 
             <hr>
 
