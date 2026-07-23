@@ -1289,6 +1289,8 @@
                 <button class="os-tab" data-hero="api">API</button>
                 <button class="os-tab" data-hero="testing">Testing</button>
                 <button class="os-tab" data-hero="generics">Generics</button>
+                <button class="os-tab" data-hero="enums">Enums</button>
+                <button class="os-tab" data-hero="traits">Traits</button>
             </div>
 
             <div class="hero-code-container">
@@ -1323,6 +1325,37 @@
         -><span style="color:#61afef;">filter</span>(<span style="color:#c678dd;">fn</span> (<span style="color:#e5c07b;">Book</span> <span style="color:#e06c75;">$book</span>): <span style="color:#e5c07b;">bool</span> => <span style="color:#e06c75;">$book</span>-><span style="color:#61afef;">isPublished</span>())
         -><span style="color:#61afef;">map</span>(<span style="color:#c678dd;">fn</span> (<span style="color:#e5c07b;">Book</span> <span style="color:#e06c75;">$book</span>): <span style="color:#e5c07b;">string</span> => <span style="color:#e06c75;">$book</span>-><span style="color:#e06c75;">title</span>)
         -><span style="color:#61afef;">toArray</span>();
+}</code></pre>
+                </div>
+
+                <div class="hero-code hidden" id="hero-enums">
+                    <pre><code><span style="color:#c678dd;">enum</span> <span style="color:#e5c07b;">Status</span>: <span style="color:#e5c07b;">string</span>
+{
+    <span style="color:#c678dd;">case</span> <span style="color:#e06c75;">Draft</span> = <span style="color:#98c379;">'draft'</span>;
+    <span style="color:#c678dd;">case</span> <span style="color:#e06c75;">Published</span> = <span style="color:#98c379;">'published'</span>;
+
+    <span style="color:#c678dd;">public function</span> <span style="color:#61afef;">label</span>(): <span style="color:#e5c07b;">string</span>
+    {
+        <span style="color:#c678dd;">return</span> <span style="color:#c678dd;">match</span> (<span style="color:#e06c75;">$this</span>) {
+            <span style="color:#e5c07b;">Status</span>::<span style="color:#e06c75;">Draft</span> => <span style="color:#98c379;">'Working on it'</span>,
+            <span style="color:#e5c07b;">Status</span>::<span style="color:#e06c75;">Published</span> => <span style="color:#98c379;">'Ready to read'</span>,
+        };
+    }
+}</code></pre>
+                </div>
+
+                <div class="hero-code hidden" id="hero-traits">
+                    <pre><code><span style="color:#c678dd;">trait</span> <span style="color:#e5c07b;">HasTimestamps</span>
+{
+    <span style="color:#c678dd;">public function</span> <span style="color:#61afef;">wasRecentlyCreated</span>(): <span style="color:#e5c07b;">bool</span>
+    {
+        <span style="color:#c678dd;">return</span> <span style="color:#e06c75;">$this</span>-><span style="color:#e06c75;">createdAt</span>-><span style="color:#61afef;">isToday</span>();
+    }
+}
+
+<span style="color:#c678dd;">final class</span> <span style="color:#e5c07b;">Book</span>
+{
+    <span style="color:#c678dd;">use</span> <span style="color:#e5c07b;">HasTimestamps</span>;
 }</code></pre>
                 </div>
             </div>

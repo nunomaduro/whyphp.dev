@@ -14,3 +14,12 @@ test('the welcome page links to the features section', function () {
         ->assertOk()
         ->assertSee('href="#features"', false);
 });
+
+test('the welcome page includes enums and traits code tabs', function () {
+    $this->get('/')
+        ->assertOk()
+        ->assertSee('data-hero="enums"', false)
+        ->assertSee('data-hero="traits"', false)
+        ->assertSee('id="hero-enums"', false)
+        ->assertSee('id="hero-traits"', false);
+});
