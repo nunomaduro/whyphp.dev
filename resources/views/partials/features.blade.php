@@ -1,5 +1,5 @@
-            <section id="features" class="reveal">
-                <h2>The features that make PHP shine</h2>
+            <section id="features" class="reveal" aria-labelledby="features-heading">
+                <h2 id="features-heading">The features that make PHP shine</h2>
 
                 <p>Not one trick. A whole toolkit for code that's type-safe, expressive, and a joy to maintain.</p>
 

@@ -52,7 +52,8 @@
             "author": {
                 "@@type": "Person",
                 "name": "Nuno Maduro",
-                "url": "https://twitter.com/enunomaduro"
+                "url": "https://twitter.com/enunomaduro",
+                "sameAs": ["https://x.com/enunomaduro", "https://github.com/nunomaduro"]
             },
             "about": {
                 "@@type": "ComputerLanguage",
@@ -115,6 +116,7 @@
 
         <!-- Theme & Icons -->
         <meta name="theme-color" content="#7A86E8">
+        <meta name="color-scheme" content="dark">
         <meta name="msapplication-TileColor" content="#7A86E8">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <meta name="mobile-web-app-capable" content="yes">

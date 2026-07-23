@@ -1,5 +1,5 @@
-            <section id="start" class="reveal">
-                <h2>Start Today</h2>
+            <section id="start" class="reveal" aria-labelledby="start-heading">
+                <h2 id="start-heading">Start Today</h2>
 
                 <p>One command. Zero config. Production-ready.</p>
 

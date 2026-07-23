@@ -1,5 +1,5 @@
-            <section id="watch-this" class="reveal">
-                <h2>Ready to see modern PHP?</h2>
+            <section id="watch-this" class="reveal" aria-labelledby="watch-heading">
+                <h2 id="watch-heading">Ready to see modern PHP?</h2>
 
                 <p>Type-safe. Expressive. Modern. It just works. <strong>Watch me explain it.</strong></p>
 

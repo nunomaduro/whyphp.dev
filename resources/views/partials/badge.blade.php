@@ -1,5 +1,5 @@
-            <section id="badge" class="reveal">
-                <h2>Show Your Support</h2>
+            <section id="badge" class="reveal" aria-labelledby="badge-heading">
+                <h2 id="badge-heading">Show Your Support</h2>
 
                 <p>Add this badge to your README. Let the mass know.</p>
 

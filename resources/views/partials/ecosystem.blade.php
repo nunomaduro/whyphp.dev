@@ -1,5 +1,5 @@
-            <section id="ecosystem" class="reveal">
-                <h2>Ecosystem</h2>
+            <section id="ecosystem" class="reveal" aria-labelledby="ecosystem-heading">
+                <h2 id="ecosystem-heading">Ecosystem</h2>
 
                 <p>Modern PHP isn't just better. It's unrecognizable from its past.</p>
 
